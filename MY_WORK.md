@@ -286,7 +286,11 @@ I ran the final program five times to check the results.
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+Synchronization can be used in banking systems.
+Locks can protect shared bank accounts.
+Ticket booking systems can prevent double bookings.
+Semaphores can control access to shared resources.
+Synchronization helps prevent errors in these systems.
 
 ### Optional: What would you like to learn more about?
 
@@ -320,20 +324,40 @@ I ran the final program five times to check the results.
 
 **Your Answer:** *(3-5 sentences)*
 
-[Write your answer here.]
+1-The expected context switches were 34, but the result was 1.
+2-A race condition can happen when two CPUs read the same counter, pause, and write the same value.
+3-This causes a lost update.
+4-Even without RaceWindow, this bug is hard to detect because threads run in different orders.
 
 Verification block of the **original starter**:
 ```
-[Paste the verification block (or the exception/watchdog message) of the starter here]
+=== VERIFICATION (expected values are computed from YOUR seed) ===
+Context switches (quanta executed)   expected 34     observed 1
+? MISMATCH
+Completed processes                 expected 20     observed 0
+? MISMATCH
+Total service time (ms)             expected 52846  observed 2000
+? MISMATCH
+Busy-waiting polls (must be 0)       expected 0      observed 0
+?
+? At least one check failed (see the ? lines above): a race condition or busy waiting is still present.
 ```
 
 Verification block of **my final version**:
 ```
-[Paste the verification block of your final version here (all lines ✔)]
+=== VERIFICATION (expected values are computed from YOUR seed) ===
+Context switches (quanta executed)   expected 34     observed 34     ?
+Completed processes                 expected 20     observed 20     ?
+Total service time (ms)             expected 52846  observed 52846  ?
+Busy-waiting polls (must be 0)       expected 0      observed 0      ?
+? All shared values are consistent.
 ```
 
 **Explanation of the timeline:**
-[Explain the lost update step by step.]
+CPU-1 reads contextSwitchCount as 5.
+CPU-2 reads the same value during RaceWindow.pause().
+Both CPUs write 6.
+The result should be 7, but it is 6.
 
 ## Question 2: Critical Sections and Lock Granularity
 
@@ -343,12 +367,20 @@ Verification block of **my final version**:
 
 **Your Answer:** *(3-5 sentences)*
 
-[Write your answer here.]
+I used one lock for the three shared statistics because it is simpler, but it may increase waiting.
+I used a separate lock for the ready queue to reduce waiting.
+Only one thread can enter each critical section at a time, and others can continue when the lock is released.
+ReentrantLock is not fair by default, so bounded waiting is not guaranteed.
 
 | Critical section (variable / method) | Lock used | Why it needs protection |
 |---|---|---|
-| [e.g., `ReadyQueue.poll()`] | [lock name] | [reason] |
-| [...] | [...] | [...] |
+| ReadyQueue.add() | lock | Protect list and map |
+| ReadyQueue.poll() | lock | Prevent CPUs from taking the same process |
+| ReadyQueue.processOf() | lock | Protect map access |
+| ReadyQueue.snapshot() | lock | Protect reading the queue |
+| contextSwitchCount | statsLock | Prevent lost updates |
+| completedProcessCount | statsLock | Prevent incorrect counts |
+| totalServiceTime | statsLock | Prevent incorrect total time |
 
 ## Question 3: Busy Waiting vs Semaphore
 
@@ -358,7 +390,10 @@ Verification block of **my final version**:
 
 **Your Answer:** *(3-5 sentences)*
 
-[Write your answer here.]
+Busy waiting wastes CPU time by repeatedly checking the queue, but my original run showed 0 polls because it crashed early.
+The semaphore counts available processes and starts at 0 because the queue is empty.
+After adding the 20 processes, its value is 20 before the CPUs start.
+The last CPU releases permits for all CPUs so they can wake up and stop instead of waiting forever.
 
 ## Question 4: Classical Problems and Deadlock
 
@@ -369,24 +404,25 @@ Verification block of **my final version**:
 **Your Answer:** *(3-5 sentences)*
 
 **Classical problem and roles**:
-[Name the problem; who is the producer, who is the consumer?]
+This is the producer-consumer problem.
+The main thread adds processes, and CPUs consume them and return unfinished processes to the queue.
 
 **Semaphores for a bounded queue (name and initial value)**:
-[Name the three semaphores and their initial values.]
+The three semaphores are empty = K, full = 0, and mutex = 1.
 
 **Deadlock scenario and prevention**:
-[Describe the scenario and the necessary condition you would break.]
-
+Deadlock can happen when a producer holds the mutex while waiting for an empty slot, and the consumer waits for the mutex.
+Waiting on the semaphore before taking the mutex prevents this deadlock by breaking circular wait.
 ## Summary
 
 **Key concepts I understood through these questions:**
-1.
-2.
-3.
+1.Race conditions and critical sections.
+2.Mutual exclusion using locks.
+3.Semaphores and busy waiting.
 
 **Concepts I need to study more:**
-1.
-2.
+1.Deadlock prevention.
+2.Lock fairness and bounded waiting.
 
 ---
 

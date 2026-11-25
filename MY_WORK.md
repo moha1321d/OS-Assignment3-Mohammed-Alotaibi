@@ -42,7 +42,7 @@
 
 ## 🎥 Video Link
 
-**Video Link**: [Paste your video link here]
+**Video Link**: https://drive.google.com/file/d/1Ako7RUKUedQV771GG34f8b2HYgSXVIbd/view?usp=drivesdk
 
 > ⚠️ **WARNING:** The video must be **publicly accessible** ("Anyone with the link can view") on **Google Drive**, **YouTube (Unlisted or Public)** or any other cloud file-sharing system. A private, restricted or broken link counts as a **missing video (-1 mark)**.
 >
@@ -327,7 +327,7 @@ Synchronization helps prevent errors in these systems.
 1-The expected context switches were 34, but the result was 1.
 2-A race condition can happen when two CPUs read the same counter, pause, and write the same value.
 3-This causes a lost update.
-4-Even without RaceWindow, this bug is hard to detect because threads run in different orders.
+4-Even without RaceWindow, a thread can be interrupted between reading and writing a shared value, making the bug difficult to reproduce.
 
 Verification block of the **original starter**:
 ```

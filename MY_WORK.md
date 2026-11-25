@@ -197,7 +197,7 @@
 
 ---
 
-### Entry 5 - November 25, 2026
+### Entry 5 - November 25, 2026, 3:25 AM
 **What I did**: Tested the final code.
 
 **Details**:
@@ -378,9 +378,9 @@ ReentrantLock is not fair by default, so bounded waiting is not guaranteed.
 | ReadyQueue.poll() | lock | Prevent CPUs from taking the same process |
 | ReadyQueue.processOf() | lock | Protect map access |
 | ReadyQueue.snapshot() | lock | Protect reading the queue |
-| contextSwitchCount | statsLock | Prevent lost updates |
-| completedProcessCount | statsLock | Prevent incorrect counts |
-| totalServiceTime | statsLock | Prevent incorrect total time |
+| contextSwitchCount | SharedStats.lock | Prevent lost updates |
+| completedProcessCount | SharedStats.lock | Prevent incorrect counts |
+| totalServiceTime | SharedStats.lock | Prevent incorrect total time |
 
 ## Question 3: Busy Waiting vs Semaphore
 

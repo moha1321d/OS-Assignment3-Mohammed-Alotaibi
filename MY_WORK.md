@@ -256,7 +256,9 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+I learned how synchronization works in Java.     I learned how race conditions cause incorrect results.
+I used ReentrantLock to protect shared data.     I used try and finally to release the lock safely.
+I learned how semaphores prevent busy waiting.
 
 ## Question 2: What was the most challenging part of this assignment?
 
@@ -264,7 +266,9 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+The hardest part was Feature 3.                  Some CPUs did not stop after the processes finished.
+I had to understand how the semaphore works.     I used wakeUpCPUs() to solve the problem.
+After that, the program stopped correctly.
 
 ## Question 3: How did you overcome the challenges you faced?
 
@@ -272,7 +276,9 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+I read the code carefully.            I checked the errors in the output.   
+I fixed each problem step by step.    I tested the code after each change.
+I ran the final program five times to check the results.
 
 ## Question 4: Where can synchronization concepts be applied in real-world applications?
 

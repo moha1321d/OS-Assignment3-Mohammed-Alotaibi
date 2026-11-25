@@ -32,11 +32,11 @@
 
 | Field | Your Answer |
 |-------|-------------|
-| **Full Name** | [Write your full name here] |
-| **Student ID** | [Write your student ID here] |
-| **University Email** | [yourid]@std.psau.edu.sa |
-| **GitHub Username** | [your-github-username] |
-| **Repository Link** | [Paste your repository link here] |
+| **Full Name** | Mohammed Nasser Alotaibi |
+| **Student ID** | 446052436 |
+| **University Email** | 446052436@std.psau.edu.sa |
+| **GitHub Username** | moha1321d |
+| **Repository Link** | https://github.com/moha1321d/OS-Assignment3-Mohammed-Alotaibi |
  
 ---
 
@@ -132,68 +132,84 @@
 
 ## Your Development Log
 
-### Entry 1 - [Date and Time]
-**What I did**:
+### Entry 1 - November 24, 2026, 6:50 AM
+**What I did**: Set up my repository and tested the code.
 
 **Details**:
+- Forked and renamed the repository.
+- Added my student ID.
+- Opened the project in VS Code.
+- Ran the original code.
 
-**Challenges**:
+**Challenges**: The program showed a NullPointerException.
 
-**Solution**:
+**Solution**: Checked the error and found a problem in the ready queue.
 
-**Time spent**:
+**Time spent**: Approximately 30 minutes.
 
 ---
 
-### Entry 2 - [Date and Time]
-**What I did**:
+### Entry 2 - November 24, 2026, 9:46 AM
+**What I did**: Completed Feature 1.
 
 **Details**:
+- Added a ReentrantLock to the ready queue.
+- Protected the shared list and map.
+- Tested the code and committed the changes.
 
-**Challenges**:
+**Challenges**: Multiple CPUs could access the queue at the same time.
 
-**Solution**:
+**Solution**: Used a lock with try and finally.
 
-**Time spent**:
+**Time spent**: Approximately 25 minutes.
 
 ---
 
-### Entry 3 - [Date and Time]
-**What I did**:
+### Entry 3 - November 25, 2026, 2:47 AM
+**What I did**: Completed Feature 2.
 
 **Details**:
+- Added one lock for the three shared statistics.
+- Protected the update and read methods.
+- Tested the code and committed the changes.
 
-**Challenges**:
+**Challenges**: The shared counters could give incorrect results.
 
-**Solution**:
+**Solution**: Used ReentrantLock to protect the counters.
 
-**Time spent**:
+**Time spent**: Approximately 30 minutes.
 
 ---
 
-### Entry 4 - [Date and Time]
-**What I did**:
+### Entry 4 - November 25, 2026, 3:28 AM
+**What I did**: Completed Feature 3.
 
 **Details**:
+- Added a counting semaphore.
+- Removed busy waiting.
+- Tested the code and committed the changes.
 
-**Challenges**:
+**Challenges**: Some CPUs did not stop after all processes finished.
 
-**Solution**:
+**Solution**: Added wakeUpCPUs() to release the waiting CPUs.
 
-**Time spent**:
+**Time spent**: Approximately 40 minutes.
 
 ---
 
-### Entry 5 - [Date and Time]
-**What I did**:
+### Entry 5 - November 25, 2026
+**What I did**: Tested the final code.
 
 **Details**:
+- Ran the program five times.
+- Checked all verification results.
+- All five runs passed.
 
-**Challenges**:
+**Challenges**: Making sure the program worked correctly every time.
 
-**Solution**:
+**Solution**: Repeated the test and checked the results.
 
-**Time spent**:
+**Time spent**: Approximately 10 minutes.
 
 ---
 
@@ -214,13 +230,13 @@
 
 > 💡 **TIP:** Fill this in **last**, after all entries are written.
 
-**Total time spent on assignment**: [X hours]
+**Total time spent on assignment**: Approximately 2 hours and 15 minutes.
 
-**Most challenging part**:
+**Most challenging part**: Making sure all CPUs stopped correctly.
 
-**Most interesting learning**:
+**Most interesting learning**: Using locks and semaphores to solve synchronization problems.
 
-**What I would do differently next time**:
+**What I would do differently next time**: Start earlier and test each change step by step.
 
 ---
 
